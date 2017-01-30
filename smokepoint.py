@@ -87,7 +87,18 @@ def get_smoke_point(intent, session):
     session_attributes = {}
     should_end_session = False
 
-    if 'Oil' in intent['slots']:
+    """
+    Should look like:
+    "slots": {
+        "Oil": {
+          "name": "Oil",
+          "value": "canola oil"
+        }
+      }
+
+    But sometimes it doesn't have the "value"
+    """
+    if 'Oil' in intent['slots'] and 'value' in intent['slots']['Oil']:
         oil = intent['slots']['Oil']['value']
         smoke_point = lookup_smoke_point(oil)
         speech_output = "The smoke point of " + oil + " is " + smoke_point
