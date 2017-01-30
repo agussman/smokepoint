@@ -71,11 +71,62 @@ def handle_session_end_request():
 
 def lookup_smoke_point(oil):
     SMOKE_POINT = {
-
+        "Almond Oil": 420,
+        "Avocado Oil, Refined": 420,
+        "Butter": 302,
+        "Canola Oil": 435,
+        "Canola Oil, Refined": 400,
+        "Canola Oil, Semi-Refined": 350,
+        "Canola Oil, Unrefined": 225,
+        "Coconut Oil": 350,
+        "Corn Oil": 410,
+        "Corn Oil, Refined": 450,
+        "Corn Oil, Unrefined": 320,
+        "Cottonseed Oil": 420,
+        "Flaxseed Oil, Unrefined": 225,
+        "Grapeseed Oil": 420,
+        "Hazelnut Oil": 430,
+        "Hemp Oil": 330,
+        "Hemp Seed Oil": 330,
+        "High-Oleic Sunflower Oil, Unrefined": 320,
+        "High-Oleic Sunflower Oil, Refined": 450,
+        "Lard": 374,
+        "Macadamia Oil": 413,
+        "Macadamia Nut Oil": 413,
+        "Olive Oil": 375,
+        "Olive Oil, Extra Light": 468,
+        "Olive Oil, Extra Virgin": 406,
+        "Olive Oil, Unrefined": 320,
+        "Olive Oil, Virgin": 420,
+        "Olive Pomace Oil": 460,
+        "Peanut Oil": 440,
+        "Peanut Oil, Refined": 450,
+        "Peanut Oil, Unrefined": 320,
+        "Rapeseed Oil": 435,
+        "Safflower Oil": 510,
+        "Safflower Oil, Refined": 450,
+        "Safflower Oil, Semi-Refined": 320,
+        "Safflower Oil, Unrefined": 225,
+        "Sesame Oil": 410,
+        "Sesame Oil, Semi-Refined": 450,
+        "Sesame Oil, Unrefined": 350,
+        "Shortening, Emulsified Vegetable": 325,
+        "Soy Bean Oil": 495,
+        "Soy Oil, Refined": 450,
+        "Soy Oil, Semi-Refined": 350,
+        "Soy Oil, Unrefined": 320,
+        "Sunflower Oil": 440,
+        "Sunflower Oil, Semi-Refined": 450,
+        "Sunflower Oil, Unrefined": 225,
+        "Tallow": 420,
+        "Tea seed oil": 485,
+        "Vegetable Shortening": 360,
+        "Walnut Oil, Semi-Refined": 400,
+        "Walnut Oil, Unrefined": 320
     }
 
-    #return SMOKE_POINT[oil]
-    return "99"
+    return SMOKE_POINT[oil]
+    #return "99"
 
 
 def get_smoke_point(intent, session):
