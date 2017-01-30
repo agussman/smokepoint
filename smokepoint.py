@@ -152,7 +152,7 @@ def get_smoke_point(intent, session):
     if 'Oil' in intent['slots'] and 'value' in intent['slots']['Oil']:
         oil = intent['slots']['Oil']['value']
         smoke_point = lookup_smoke_point(oil)
-        speech_output = "The smoke point of " + oil + " is " + smoke_point
+        speech_output = "The smoke point of %s is %s degrees fahrenheit" % (oil, smoke_point)
         reprompt_text = "You can ask me your favorite color by saying, " \
                         "what's my favorite color?"
     else:
