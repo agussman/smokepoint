@@ -1,0 +1,16 @@
+{
+  "intents": [
+    {
+      "intent": "SmokePointIsIntent",
+      "slots": [
+        {
+          "name": "Oil",
+          "type": "LIST_OF_OILS"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
