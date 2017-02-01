@@ -20,8 +20,8 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
         },
         'card': {
             'type': 'Simple',
-            'title': "SessionSpeechlet - " + title,
-            'content': "SessionSpeechlet - " + output
+            'title': title,
+            'content': output
         },
         'reprompt': {
             'outputSpeech': {
@@ -49,7 +49,7 @@ def get_welcome_response():
     """
 
     session_attributes = {}
-    card_title = "Welcome"
+    card_title = "Welcome to Smokepoint!"
     speech_output = "Please tell me the name of the oil or cooking substance you'd like the smoke point of."
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
@@ -61,12 +61,12 @@ def get_welcome_response():
 
 def handle_session_end_request():
     card_title = "Session Ended"
-    speech_output = "Thank you for trying the Alexa Skills Kit sample. " \
-                    "Have a nice day! "
+    speech_output = "Thank you for using Smokepoint!"
+    reprompt_text = "Thank you for using Smokepoint! Feedback is always welcome. You can find me on Twitter at @percontate."
     # Setting this to true ends the session and exits the skill.
     should_end_session = True
     return build_response({}, build_speechlet_response(
-        card_title, speech_output, None, should_end_session))
+        card_title, speech_output, reprompt_text, should_end_session))
 
 
 def lookup_smoke_point(oil):
@@ -137,7 +137,7 @@ def get_smoke_point(intent, session):
     user.
     """
 
-    card_title = intent['name']
+    card_title = "Smokepoint"
     session_attributes = {}
     should_end_session = False
 
@@ -154,9 +154,10 @@ def get_smoke_point(intent, session):
     """
     if 'Oil' in intent['slots'] and 'value' in intent['slots']['Oil']:
         oil = intent['slots']['Oil']['value']
+        card_title = "Smoke point of %s" % oil
         smoke_point = lookup_smoke_point(oil)
         speech_output = "The smoke point of %s is %s degrees fahrenheit" % (oil, smoke_point)
-        reprompt_text = "The smoke point of %s is %s degrees fahrenheit" % (oil, smoke_point)
+        reprompt_text = "The smoke point of %s is %s degrees Fahrenheit" % (oil, smoke_point)
         should_end_session = True
     else:
         speech_output = "I did not recognize the name of the oil or cooking substance. " \
