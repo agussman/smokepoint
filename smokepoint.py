@@ -72,7 +72,8 @@ def handle_session_end_request():
 def get_smoke_points():
     SMOKE_POINT = {
         "almond oil": 420,
-        "avocado oil refined": 420,
+        "avocado oil": 520,
+        "avocado oil refined": 520,
         "butter": 302,
         "canola oil": 435,
         "canola oil refined": 400,
