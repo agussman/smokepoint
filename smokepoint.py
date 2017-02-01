@@ -155,7 +155,7 @@ def get_smoke_point(intent, session):
 
     smoke_points = get_smoke_points()
 
-    if 'Oil' in intent['slots'] and 'value' in intent['slots']['Oil'] and 'oil' in smoke_points:
+    if 'Oil' in intent['slots'] and 'value' in intent['slots']['Oil'] and intent['slots']['Oil']['value'] in smoke_points:
         oil = intent['slots']['Oil']['value']
         card_title = "Smoke point of %s" % oil
 
