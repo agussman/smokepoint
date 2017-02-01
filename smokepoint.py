@@ -84,7 +84,6 @@ def get_smoke_points():
         "corn oil refined": 450,
         "corn oil unrefined": 320,
         "cottonseed oil": 420,
-        "EVOO": 406,
         "evoo": 406,
         "extra-virgin olive oil": 406,
         "extra virgin olive oil": 406,
@@ -156,11 +155,11 @@ def get_smoke_point(intent, session):
 
     smoke_points = get_smoke_points()
 
-    if 'Oil' in intent['slots'] and 'value' in intent['slots']['Oil'] and intent['slots']['Oil']['value'] in smoke_points:
+    if 'Oil' in intent['slots'] and 'value' in intent['slots']['Oil'] and intent['slots']['Oil']['value'].lower() in smoke_points:
         oil = intent['slots']['Oil']['value']
         card_title = "Smoke point of %s" % oil
 
-        smoke_point = smoke_points[oil]
+        smoke_point = smoke_points[oil.lower()]
         speech_output = "The smoke point of %s is %s degrees fahrenheit" % (oil, smoke_point)
         reprompt_text = "The smoke point of %s is %s degrees Fahrenheit" % (oil, smoke_point)
         should_end_session = True
