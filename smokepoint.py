@@ -69,7 +69,7 @@ def handle_session_end_request():
         card_title, speech_output, reprompt_text, should_end_session))
 
 
-def lookup_smoke_point(oil):
+def get_smoke_points():
     SMOKE_POINT = {
         "almond oil": 420,
         "avocado oil refined": 420,
@@ -129,7 +129,7 @@ def lookup_smoke_point(oil):
         "walnut oil unrefined": 320
     }
 
-    return SMOKE_POINT[oil]
+    return SMOKE_POINT
 
 
 def get_smoke_point(intent, session):
@@ -152,10 +152,14 @@ def get_smoke_point(intent, session):
 
     But sometimes it doesn't have the "value"
     """
-    if 'Oil' in intent['slots'] and 'value' in intent['slots']['Oil']:
+
+    smoke_points = get_smoke_points()
+
+    if 'Oil' in intent['slots'] and 'value' in intent['slots']['Oil'] and 'oil' in smoke_points:
         oil = intent['slots']['Oil']['value']
         card_title = "Smoke point of %s" % oil
-        smoke_point = lookup_smoke_point(oil)
+
+        smoke_point = smoke_points[oil]
         speech_output = "The smoke point of %s is %s degrees fahrenheit" % (oil, smoke_point)
         reprompt_text = "The smoke point of %s is %s degrees Fahrenheit" % (oil, smoke_point)
         should_end_session = True
